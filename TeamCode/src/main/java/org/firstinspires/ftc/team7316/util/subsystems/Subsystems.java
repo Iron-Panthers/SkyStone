@@ -15,7 +15,7 @@ public class Subsystems {
 
     private Subsystems () {
 
-        subsystems = new Subsystem[]{driveSubsystem,climberSubsystem,plateSubsystem,intakeSubsystem,intakeExtendSubsystem,traySubsystem};
+        subsystems = new Subsystem[]{};
     }
 
     public static void createSubsystems() {
