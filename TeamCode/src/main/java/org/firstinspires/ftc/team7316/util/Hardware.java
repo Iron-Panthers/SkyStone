@@ -24,8 +24,11 @@ public class Hardware {
 
     public static Telemetry telemetry;
 
-    public DcMotor leftmotor;
-    public DcMotor rightmotor;
+    public DcMotor frontLeftMotor;
+    public DcMotor frontRightMotor;
+    public DcMotor backLeftMotor;
+    public DcMotor backRightMotor;
+
     public DcMotor centermotor;
     public DcMotor climbmotor1;
 
@@ -40,16 +43,20 @@ public class Hardware {
     public BNO055IMU imu;
     public TouchSensor climbSwitch;
 
-    public DCMotorWrapper leftmotorWrapper;
-    public DCMotorWrapper rightmotorWrapper;
+    public DCMotorWrapper frontLeftMotorWrapper;
+    public DCMotorWrapper frontRightMotorWrapper;
+    public DCMotorWrapper backLeftMotorWrapper;
+    public DCMotorWrapper backRightMotorWrapper;
     public DCMotorWrapper centermotorWrapper;
     public GyroWrapper gyroWrapper;
     public DCMotorWrapper extendmotorleftWrapper;
     public DCMotorWrapper extenmotorrightWrapper;
 
     //Create all the hardware fields
-    public final String leftMotorName = "lmotor";
-    public final String rightMotorName = "rmotor";
+    public final String frontLeftMotorName = "flmotor";
+    public final String frontRightMotorName = "frmotor";
+    public final String backLeftMotorName = "blmotor";
+    public final String backRightMotorName = "brmotor";
     public final String centerMotorName = "cmotor";
     public final String climbMotor1Name = "clmotor1";
     public final String climbMotor2Name = "clmotor2";
@@ -67,8 +74,10 @@ public class Hardware {
      * Initialize all the hardware fields here
      */
     public Hardware (HardwareMap map) {
-        leftmotor = map.dcMotor.get(leftMotorName);
-        rightmotor= map.dcMotor.get(rightMotorName);
+        frontLeftMotor = map.dcMotor.get(frontLeftMotorName);
+        frontRightMotor= map.dcMotor.get(frontRightMotorName);
+        backLeftMotor = map.dcMotor.get(backLeftMotorName);
+        backRightMotor= map.dcMotor.get(backRightMotorName);
         centermotor=map.dcMotor.get(centerMotorName);
         climbmotor1=map.dcMotor.get(climbMotor1Name);
         climbmotor2=map.dcMotor.get(climbMotor2Name);
@@ -76,18 +85,22 @@ public class Hardware {
         extendmotorright=map.dcMotor.get(ExtendMotorRightName);
 
 
-        leftmotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        rightmotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        frontRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         centermotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         climbmotor1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         climbmotor2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        leftmotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        //leftmotor.setDirection(DcMotorSimple.Direction.REVERSE);
         extendmotorright.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         extendmotorleft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
-        leftmotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rightmotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         centermotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         climbmotor1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         climbmotor2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -113,8 +126,10 @@ public class Hardware {
         imu.initialize(gyroParams);
         gyroWrapper = new GyroWrapper(imu);
 
-        leftmotorWrapper = new DCMotorWrapper(leftmotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.DRIVE_M_LEFT, Constants.DRIVE_B_LEFT, 0));
-        rightmotorWrapper = new DCMotorWrapper(rightmotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.DRIVE_M_RIGHT, Constants.DRIVE_B_RIGHT, 0));
+        frontLeftMotorWrapper = new DCMotorWrapper(frontLeftMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.DRIVE_M_LEFT, Constants.DRIVE_B_LEFT, 0));
+        frontRightMotorWrapper = new DCMotorWrapper(frontRightMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.DRIVE_M_RIGHT, Constants.DRIVE_B_RIGHT, 0));
+        backLeftMotorWrapper = new DCMotorWrapper(backLeftMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.DRIVE_M_LEFT, Constants.DRIVE_B_LEFT, 0));
+        backRightMotorWrapper = new DCMotorWrapper(backRightMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.DRIVE_M_RIGHT, Constants.DRIVE_B_RIGHT, 0));
         centermotorWrapper = new DCMotorWrapper(centermotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.TURN_D, Constants.TURN_M, Constants.TURN_B, 0));
     }
 

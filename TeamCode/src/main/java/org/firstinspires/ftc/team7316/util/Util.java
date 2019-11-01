@@ -58,4 +58,28 @@ public class Util {
         }
         return value;
     }
+
+    /**
+     * finds angle from positive x axis based on x and y point
+     * @param x
+     * @param y
+     * @return
+     */
+    public static double getAngleFromPoint(double x, double y) {
+        double referenceAngle = Math.atan( Math.abs(y/x) );
+        if(x >= 0 && y > 0) {
+            return referenceAngle;
+        }
+        else if(x < 0 && y > 0) {
+            return Math.PI - referenceAngle;
+        }
+        else if(x < 0 && y <= 0) {
+            return Math.PI + referenceAngle;
+        }
+        else if(x >= 0 && y <= 0) {
+            return 2 * Math.PI - referenceAngle;
+        }
+        return 0.0;
+    }
+
 }

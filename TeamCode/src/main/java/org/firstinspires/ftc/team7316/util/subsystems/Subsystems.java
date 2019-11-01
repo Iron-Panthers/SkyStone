@@ -11,11 +11,12 @@ public class Subsystems {
     public static Subsystems instance = null;
 
     public Subsystem[] subsystems;
+    public MecanumDriveSubsystem mecanumDriveSubsystem;
 
 
     private Subsystems () {
-
-        subsystems = new Subsystem[]{};
+        mecanumDriveSubsystem = new MecanumDriveSubsystem();
+        subsystems = new Subsystem[]{mecanumDriveSubsystem};
     }
 
     public static void createSubsystems() {
