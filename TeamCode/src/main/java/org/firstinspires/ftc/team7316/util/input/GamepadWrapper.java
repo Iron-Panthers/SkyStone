@@ -2,9 +2,7 @@ package org.firstinspires.ftc.team7316.util.input;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-import org.firstinspires.ftc.team7316.util.Constants;
-import org.firstinspires.ftc.team7316.util.commands.*;
-import org.firstinspires.ftc.team7316.util.Scheduler;
+import org.firstinspires.ftc.team7316.maps.Constants;
 
 /**
  * Created by Wesley on 9/15/16.

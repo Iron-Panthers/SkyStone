@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.team7316;
+package org.firstinspires.ftc.team7316.maps;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
@@ -9,7 +9,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.team7316.util.Constants;
 import org.firstinspires.ftc.team7316.util.GyroWrapper;
 import org.firstinspires.ftc.team7316.util.PID;
 import org.firstinspires.ftc.team7316.util.motorwrappers.DCMotorWrapper;

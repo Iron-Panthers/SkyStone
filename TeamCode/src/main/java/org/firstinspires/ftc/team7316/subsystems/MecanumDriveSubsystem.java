@@ -1,9 +1,10 @@
-package org.firstinspires.ftc.team7316.util.subsystems;
+package org.firstinspires.ftc.team7316.subsystems;
 
-import org.firstinspires.ftc.team7316.util.Hardware;
+import org.firstinspires.ftc.team7316.maps.Hardware;
 import org.firstinspires.ftc.team7316.util.commands.Command;
-import org.firstinspires.ftc.team7316.util.commands.JoystickDrive;
+import org.firstinspires.ftc.team7316.commands.JoystickDrive;
 import org.firstinspires.ftc.team7316.util.copypastaLib.MotionPath;
+import org.firstinspires.ftc.team7316.util.subsystems.Subsystem;
 
 public class MecanumDriveSubsystem extends Subsystem {
 

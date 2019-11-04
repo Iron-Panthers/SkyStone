@@ -11,7 +11,7 @@ import org.firstinspires.ftc.team7316.commands.TurnGyroSimple;
 import org.firstinspires.ftc.team7316.commands.TurnTowardsCheddar;
 import org.firstinspires.ftc.team7316.commands.TurnTowardsCorridor;
 import org.firstinspires.ftc.team7316.commands.UnturnCheddar;
-import org.firstinspires.ftc.team7316.util.Constants;
+import org.firstinspires.ftc.team7316.maps.Constants;
 import org.firstinspires.ftc.team7316.util.commands.flow.SequentialCommand;
 import org.firstinspires.ftc.team7316.util.commands.flow.Wait;
 

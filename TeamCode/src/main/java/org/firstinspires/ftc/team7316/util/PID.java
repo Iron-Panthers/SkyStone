@@ -2,6 +2,7 @@ package org.firstinspires.ftc.team7316.util;
 
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.team7316.maps.Hardware;
 import org.firstinspires.ftc.team7316.util.copypastaLib.MotionPath;
 
 import java.util.ArrayList;

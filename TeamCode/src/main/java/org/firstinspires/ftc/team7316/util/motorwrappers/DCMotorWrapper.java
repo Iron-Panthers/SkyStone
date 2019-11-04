@@ -2,7 +2,7 @@ package org.firstinspires.ftc.team7316.util.motorwrappers;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import org.firstinspires.ftc.team7316.util.Constants;
+import org.firstinspires.ftc.team7316.maps.Constants;
 import org.firstinspires.ftc.team7316.util.PID;
 import org.firstinspires.ftc.team7316.util.copypastaLib.MotionPath;
 

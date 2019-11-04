@@ -5,9 +5,9 @@ import android.util.Log;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.team7316.util.Scheduler;
-import org.firstinspires.ftc.team7316.util.Hardware;
-import org.firstinspires.ftc.team7316.util.input.OI;
-import org.firstinspires.ftc.team7316.util.subsystems.Subsystems;
+import org.firstinspires.ftc.team7316.maps.Hardware;
+import org.firstinspires.ftc.team7316.maps.OI;
+import org.firstinspires.ftc.team7316.maps.Subsystems;
 
 /**
  * OpMode that initializes Hardware and Scheduler for you. Please use this instead of rewriting the

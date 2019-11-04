@@ -4,9 +4,9 @@ import android.util.Log;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-import org.firstinspires.ftc.team7316.util.Hardware;
+import org.firstinspires.ftc.team7316.maps.Hardware;
 import org.firstinspires.ftc.team7316.util.Scheduler;
-import org.firstinspires.ftc.team7316.util.subsystems.Subsystems;
+import org.firstinspires.ftc.team7316.maps.Subsystems;
 
 /**
  * Opmode that does all the stuff needed for auto only

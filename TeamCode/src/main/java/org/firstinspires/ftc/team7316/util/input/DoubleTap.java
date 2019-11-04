@@ -1,11 +1,8 @@
 package org.firstinspires.ftc.team7316.util.input;
 
 import com.qualcomm.robotcore.util.ElapsedTime;
-import org.firstinspires.ftc.team7316.util.commands.*;
 
 import org.firstinspires.ftc.team7316.util.Listenable;
-import org.firstinspires.ftc.team7316.util.Hardware;
-import org.firstinspires.ftc.team7316.util.subsystems.Subsystem;
 
 /**
  * Created by Maxim on 1/31/2017.

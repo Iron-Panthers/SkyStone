@@ -1,9 +1,9 @@
-package org.firstinspires.ftc.team7316.util.commands;
+package org.firstinspires.ftc.team7316.commands;
 
-import org.firstinspires.ftc.team7316.util.Hardware;
 import org.firstinspires.ftc.team7316.util.Util;
-import org.firstinspires.ftc.team7316.util.input.OI;
-import org.firstinspires.ftc.team7316.util.subsystems.Subsystems;
+import org.firstinspires.ftc.team7316.util.commands.Command;
+import org.firstinspires.ftc.team7316.maps.OI;
+import org.firstinspires.ftc.team7316.maps.Subsystems;
 
 public class JoystickDrive extends Command {
 

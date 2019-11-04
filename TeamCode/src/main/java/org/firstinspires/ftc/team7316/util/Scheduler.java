@@ -1,12 +1,10 @@
 package org.firstinspires.ftc.team7316.util;
 
-import android.util.Log;
-
 import java.util.ArrayList;
-import java.util.HashMap;
+
 import org.firstinspires.ftc.team7316.util.commands.*;
 import org.firstinspires.ftc.team7316.util.subsystems.Subsystem;
-import org.firstinspires.ftc.team7316.util.subsystems.Subsystems;
+import org.firstinspires.ftc.team7316.maps.Subsystems;
 
 /**
  * Controls and manages all the commands of the robot.
