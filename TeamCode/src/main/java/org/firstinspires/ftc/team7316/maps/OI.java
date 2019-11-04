@@ -1,10 +1,11 @@
-package org.firstinspires.ftc.team7316.util.input;
+package org.firstinspires.ftc.team7316.input;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 //import org.firstinspires.ftc.team7316.commands.ClimbForPosition;
 //import org.firstinspires.ftc.team7316.commands.MovePlateServo;
-import org.firstinspires.ftc.team7316.util.Constants;
+import org.firstinspires.ftc.team7316.util.input.GamepadWrapper;
+import org.firstinspires.ftc.team7316.util.input.JoystickWrapper;
 
 /**
  * Created by andrew on 10/18/17.
