@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class PID {
 
-    private double p, i, d, f_m, f_b;
+    private double p, i, d;
     private double previous, sum;
     public ArrayList<String[]> dataPoints = new ArrayList<>();
 
@@ -33,12 +33,11 @@ public class PID {
     private int targetTicksFinal = 0;
     private int startTicks = 0;
 
-    public PID(double p, double i, double d, double f_m, double f_b, double maxSpeed) {
+    public PID(double p, double i, double d, double maxSpeed) {
         this.p = p;
         this.i = i;
         this.d = d;
-        this.f_m = f_m;
-        this.f_b = f_b;
+
 
         this.maxSpeed = maxSpeed;
 
@@ -137,8 +136,7 @@ public class PID {
 
         Hardware.log("delta", delta);
 
-        out = p * error + i * sum + d * delta + predSpeed /  f_m;
-        out += Math.signum(out) * f_b / f_m*2;
+        out = p * error + i * sum + d * delta + predSpeed;
 
         double speed = (sensorChange) / dtime;
         dataPoints.add(new String[]{String.valueOf(timer.seconds()),

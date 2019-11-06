@@ -30,46 +30,21 @@ public class Hardware {
     public DcMotor backLeftMotor;
     public DcMotor backRightMotor;
 
-    public DcMotor centermotor;
-    public DcMotor climbmotor1;
 
-    public DcMotor climbmotor2;
 
-    public DcMotor extendmotorleft;
-    public DcMotor extendmotorright;
 
-    public Servo plateServo;
-    public Servo trayAngleServo;
-    public CRServo intakeServo;
     public BNO055IMU imu;
-    public TouchSensor climbSwitch;
-
     public DCMotorWrapper frontLeftMotorWrapper;
     public DCMotorWrapper frontRightMotorWrapper;
     public DCMotorWrapper backLeftMotorWrapper;
     public DCMotorWrapper backRightMotorWrapper;
-    public DCMotorWrapper centermotorWrapper;
-    public GyroWrapper gyroWrapper;
-    public DCMotorWrapper extendmotorleftWrapper;
-    public DCMotorWrapper extenmotorrightWrapper;
-
     //Create all the hardware fields
     public final String frontLeftMotorName = "flmotor";
     public final String frontRightMotorName = "frmotor";
     public final String backLeftMotorName = "blmotor";
     public final String backRightMotorName = "brmotor";
-    public final String centerMotorName = "cmotor";
-    public final String climbMotor1Name = "clmotor1";
-    public final String climbMotor2Name = "clmotor2";
-    public final String plateServoName = "bservo";
-    public final String trayExtendServoLeftName= "tlservo";
-    public final String trayExtendServoRightName= "trservo";
-    public final String trayAngleServoName= "taservo";
-    public final String extendMotorLeftName = "elmotor";
-    public final String ExtendMotorRightName = "ermotor";
     public final String imuname = "gyro";
-    public final String intakeServoName = "iservo";
-    public final String climbSwitchName = "clswitch";
+
 
     /**
      * Initialize all the hardware fields here
@@ -79,41 +54,22 @@ public class Hardware {
         frontRightMotor= map.dcMotor.get(frontRightMotorName);
         backLeftMotor = map.dcMotor.get(backLeftMotorName);
         backRightMotor= map.dcMotor.get(backRightMotorName);
-        centermotor=map.dcMotor.get(centerMotorName);
-        climbmotor1=map.dcMotor.get(climbMotor1Name);
-        climbmotor2=map.dcMotor.get(climbMotor2Name);
-        extendmotorleft=map.dcMotor.get(extendMotorLeftName);
-        extendmotorright=map.dcMotor.get(ExtendMotorRightName);
 
 
         frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         frontRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        centermotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        climbmotor1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        climbmotor2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         //leftmotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        extendmotorright.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        extendmotorleft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
         frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        centermotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        climbmotor1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        climbmotor2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
-        extendmotorright.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        extendmotorleft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
-        plateServo=map.servo.get(plateServoName);
-        intakeServo=map.crservo.get(intakeServoName);
 
-        trayAngleServo=map.servo.get(trayAngleServoName);
         BNO055IMU.Parameters gyroParams = new BNO055IMU.Parameters();
         climbSwitch = map.touchSensor.get(climbSwitchName);
         gyroParams.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
@@ -131,7 +87,6 @@ public class Hardware {
         frontRightMotorWrapper = new DCMotorWrapper(frontRightMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.DRIVE_M_RIGHT, Constants.DRIVE_B_RIGHT, 0));
         backLeftMotorWrapper = new DCMotorWrapper(backLeftMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.DRIVE_M_LEFT, Constants.DRIVE_B_LEFT, 0));
         backRightMotorWrapper = new DCMotorWrapper(backRightMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.DRIVE_M_RIGHT, Constants.DRIVE_B_RIGHT, 0));
-        centermotorWrapper = new DCMotorWrapper(centermotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.TURN_D, Constants.TURN_M, Constants.TURN_B, 0));
     }
 
     public static void setHardwareMap(HardwareMap map) {
