@@ -28,8 +28,8 @@ public class Constants {
     public static final double ACCELERATION_SPEED = 0.2;
 
     public static final double DRIVE_P =0.00;
-    public static final double DRIVE_I = 0;//0.00005;
-    public static final double DRIVE_D = 0;
+    public static final double DRIVE_I = 0.0;//0.00005;
+    public static final double DRIVE_D = 0.0;
     public static final double DRIVE_M_LEFT = 4065.36;
     public static final double DRIVE_B_LEFT = 718;
     public static final double DRIVE_M_RIGHT = 2542.36;

@@ -38,16 +38,21 @@ public class JoystickDrive extends Command {
         double rotatedX = Math.cos(rotatedAngle);
         double rotatedY = Math.sin(rotatedAngle);
 
+        double tempRotatedX = rotatedX;
+        double tempRotatedY = rotatedY;
 
         if(rotatedX > rotatedY) {
-            rotatedY = magnitude * rotatedY/rotatedX;
+            rotatedY = magnitude * Math.abs(rotatedY/rotatedX);
             rotatedX = magnitude;
         }
 
         else {
-            rotatedX = magnitude * rotatedX/rotatedY;
+            rotatedX = magnitude * Math.abs(rotatedX/rotatedY);
             rotatedY = magnitude;
         }
+
+        rotatedX = Math.copySign(rotatedX, tempRotatedX);
+        rotatedY = Math.copySign(rotatedY, tempRotatedY);
 
         Hardware.log("rotated x:", rotatedX);
         Hardware.log("rotated y:", rotatedY);

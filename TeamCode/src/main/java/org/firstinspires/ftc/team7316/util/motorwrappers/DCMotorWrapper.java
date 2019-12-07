@@ -17,11 +17,13 @@ public class DCMotorWrapper {
     private long lastTicks;
 
     private double maxPower;
+    private boolean inverted;
 
-    public DCMotorWrapper(DcMotor motor, PID pid) {
+    public DCMotorWrapper(DcMotor motor, PID pid, boolean encInverted) {
         this.motor = motor;
         this.pid = pid;
         maxPower = 1;
+        inverted = encInverted;
     }
 
     public void setPath(MotionPath path) {
@@ -37,7 +39,7 @@ public class DCMotorWrapper {
     }
 
     public int getError() {
-        return pid.getTargetTicksCurrent() - motor.getCurrentPosition();
+        return (inverted) ? pid.getTargetTicksCurrent() + motor.getCurrentPosition() : pid.getTargetTicksCurrent() - motor.getCurrentPosition();
     }
 
     public void setPowerPID(double dTime) {
