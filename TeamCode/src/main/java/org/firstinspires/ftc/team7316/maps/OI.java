@@ -18,12 +18,14 @@ public class OI {
     public GamepadWrapper gp1;
     public GamepadWrapper gp2;
     public JoystickWrapper gp1LeftStick;
+    public JoystickWrapper gp1RightStick;
 
     private OI(Gamepad gamepad1, Gamepad gamepad2) {
 
         gp1 = new GamepadWrapper(gamepad1);
         gp2 = new GamepadWrapper(gamepad2);
         gp1LeftStick = new JoystickWrapper(JoystickWrapper.Joystick.LEFT, gp1);
+        gp1RightStick = new JoystickWrapper(JoystickWrapper.Joystick.RIGHT, gp1);
 
     }
 

@@ -4,6 +4,7 @@ import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.TouchSensor;
@@ -29,6 +30,9 @@ public class Hardware {
     public DcMotor frontRightMotor;
     public DcMotor backLeftMotor;
     public DcMotor backRightMotor;
+    public Servo leftTrayServo;
+    public Servo rightTrayServo;
+    public GyroWrapper gyroWrapper;
 
 
 
@@ -43,6 +47,8 @@ public class Hardware {
     public final String frontRightMotorName = "frmotor";
     public final String backLeftMotorName = "blmotor";
     public final String backRightMotorName = "brmotor";
+    public final String leftTrayServoName = "ltservo";
+    public final String rightTrayServoName= "rtservo";
     public final String imuname = "gyro";
 
 
@@ -54,6 +60,8 @@ public class Hardware {
         frontRightMotor= map.dcMotor.get(frontRightMotorName);
         backLeftMotor = map.dcMotor.get(backLeftMotorName);
         backRightMotor= map.dcMotor.get(backRightMotorName);
+        leftTrayServo=map.servo.get(leftTrayServoName);
+        rightTrayServo=map.servo.get(rightTrayServoName);
 
 
         frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -65,13 +73,14 @@ public class Hardware {
 
         frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        //frontRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
 
         BNO055IMU.Parameters gyroParams = new BNO055IMU.Parameters();
-        climbSwitch = map.touchSensor.get(climbSwitchName);
         gyroParams.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
         gyroParams.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
         gyroParams.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
@@ -82,11 +91,10 @@ public class Hardware {
         imu = map.get(BNO055IMU.class, imuname);
         imu.initialize(gyroParams);
         gyroWrapper = new GyroWrapper(imu);
-
-        frontLeftMotorWrapper = new DCMotorWrapper(frontLeftMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.DRIVE_M_LEFT, Constants.DRIVE_B_LEFT, 0));
-        frontRightMotorWrapper = new DCMotorWrapper(frontRightMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.DRIVE_M_RIGHT, Constants.DRIVE_B_RIGHT, 0));
-        backLeftMotorWrapper = new DCMotorWrapper(backLeftMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.DRIVE_M_LEFT, Constants.DRIVE_B_LEFT, 0));
-        backRightMotorWrapper = new DCMotorWrapper(backRightMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.DRIVE_M_RIGHT, Constants.DRIVE_B_RIGHT, 0));
+        frontLeftMotorWrapper = new DCMotorWrapper(frontLeftMotor,true, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, 0,"front left") );
+        frontRightMotorWrapper = new DCMotorWrapper(frontRightMotor,false, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, 0, "front right"));
+        backLeftMotorWrapper = new DCMotorWrapper(backLeftMotor,false, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, 0, "back left"));
+        backRightMotorWrapper = new DCMotorWrapper(backRightMotor,false, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, 0,"back right"));
     }
 
     public static void setHardwareMap(HardwareMap map) {

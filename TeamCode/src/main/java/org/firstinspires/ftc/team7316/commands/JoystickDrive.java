@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.team7316.commands;
 
+import org.firstinspires.ftc.team7316.maps.Hardware;
 import org.firstinspires.ftc.team7316.util.Util;
 import org.firstinspires.ftc.team7316.util.commands.Command;
 import org.firstinspires.ftc.team7316.maps.OI;
@@ -14,9 +15,13 @@ public class JoystickDrive extends Command {
 
     @Override
     public void loop() {
-        double y = OI.instance.gp1.left_stick.getY();
-        double x = OI.instance.gp1.left_stick.getX();
-        double turn = OI.instance.gp1.right_stick.getX();
+        double y = OI.instance.gp1LeftStick.getY();
+        double x = OI.instance.gp1LeftStick.getX();
+        double turn = OI.instance.gp1RightStick.getX();
+
+        Hardware.log("y:", y);
+        Hardware.log("x:", x);
+        Hardware.log("turn:", turn);
 
         double magnitude = Math.sqrt(y*y + x*x);
         double angle = Util.getAngleFromPoint(x,y);
@@ -28,8 +33,10 @@ public class JoystickDrive extends Command {
         double rotatedX = Math.cos(rotatedAngle);
         double rotatedY = Math.sin(rotatedAngle);
 
+        double tempRotatedX = rotatedX;
+        double tempRotatedY = rotatedY;
 
-        if(rotatedX > rotatedY) {
+        if(Math.abs(rotatedX) > Math.abs(rotatedY) ) {
             rotatedY = magnitude * rotatedY/rotatedX;
             rotatedX = magnitude;
         }
@@ -39,8 +46,12 @@ public class JoystickDrive extends Command {
             rotatedY = magnitude;
         }
 
+        rotatedX = Math.copySign(rotatedX, tempRotatedX);
+        rotatedY = Math.copySign(rotatedY, tempRotatedY);
+
         Subsystems.instance.mecanumDriveSubsystem.setMotors(rotatedY + turn, rotatedX - turn,
                 rotatedX + turn, rotatedY - turn);
+
     }
 
     @Override

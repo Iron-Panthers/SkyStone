@@ -99,7 +99,7 @@ public class CombinedPath implements MotionPath {
 
     public double getPosition(double time) {
         double dt = this.getDeltaTime(time);
-        return time >= this.getTotalTime()?this.start + this.getTotalDistance():this.start + this.getCurve(time).getPosition(dt) + this.travelledPathDistance;
+        return time >= this.getTotalTime() ? this.start + this.getTotalDistance() : this.start + this.getCurve(time).getPosition(dt) + this.travelledPathDistance;
     }
 
     public double getTotalTime() {

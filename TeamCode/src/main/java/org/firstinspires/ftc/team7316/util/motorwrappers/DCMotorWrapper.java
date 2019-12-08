@@ -3,6 +3,7 @@ package org.firstinspires.ftc.team7316.util.motorwrappers;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.team7316.maps.Constants;
+import org.firstinspires.ftc.team7316.maps.Hardware;
 import org.firstinspires.ftc.team7316.util.PID;
 import org.firstinspires.ftc.team7316.util.copypastaLib.MotionPath;
 
@@ -15,13 +16,14 @@ public class DCMotorWrapper {
     private DcMotor motor;
     public PID pid;
     private long lastTicks;
-
+    private boolean isInverted;
     private double maxPower;
 
-    public DCMotorWrapper(DcMotor motor, PID pid) {
+    public DCMotorWrapper(DcMotor motor, boolean isInverted, PID pid) {
         this.motor = motor;
         this.pid = pid;
         maxPower = 1;
+        this.isInverted=isInverted;
     }
 
     public void setPath(MotionPath path) {
@@ -37,6 +39,7 @@ public class DCMotorWrapper {
     }
 
     public int getError() {
+        Hardware.log("encoder pos", motor.getCurrentPosition());
         return pid.getTargetTicksCurrent() - motor.getCurrentPosition();
     }
 
@@ -51,7 +54,12 @@ public class DCMotorWrapper {
         if (Math.abs(pow) > maxPower) {
             pow = (pow > 0) ? maxPower : -maxPower;
         }
-        motor.setPower(pow);
+        if(isInverted==true){
+            motor.setPower(-pow);
+        }
+        else {
+            motor.setPower(pow);
+        }
     }
 
     public boolean completedDistance() {

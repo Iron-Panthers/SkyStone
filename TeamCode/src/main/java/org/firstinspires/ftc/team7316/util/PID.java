@@ -32,13 +32,13 @@ public class PID {
     private int targetTicksCurrent = 0;
     private int targetTicksFinal = 0;
     private int startTicks = 0;
+    private String name;
 
-    public PID(double p, double i, double d, double maxSpeed) {
+    public PID(double p, double i, double d, double maxSpeed,String name) {
         this.p = p;
         this.i = i;
         this.d = d;
-
-
+        this.name = name;
         this.maxSpeed = maxSpeed;
 
         out = 0;
@@ -147,7 +147,7 @@ public class PID {
                 String.valueOf(sensor),
                 String.valueOf(out)});
 
-        Hardware.log("error", error);
+        Hardware.log("error"+name, error);
         Hardware.log("speed", predSpeed);
         Hardware.log("power", out);
 
