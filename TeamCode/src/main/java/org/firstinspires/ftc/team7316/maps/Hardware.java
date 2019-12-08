@@ -34,8 +34,10 @@ public class Hardware {
     public Servo rightTrayServo;
     public GyroWrapper gyroWrapper;
 
-
-
+    public DcMotor lArmMotor;
+    public DcMotor rArmMotor;
+    public DcMotor lIntakeMotor;
+    public DcMotor rIntakeMotor;
 
     public BNO055IMU imu;
     public DCMotorWrapper frontLeftMotorWrapper;
@@ -47,6 +49,10 @@ public class Hardware {
     public final String frontRightMotorName = "frmotor";
     public final String backLeftMotorName = "blmotor";
     public final String backRightMotorName = "brmotor";
+    public final String lArmMotorName = "larmmotor";
+    public final String rArmMotorName = "rarmmotor";
+    public final String lIntakeMotorName = "lintakemotor";
+    public final String rIntakeMotorName = "rintakemotor";
     public final String leftTrayServoName = "ltservo";
     public final String rightTrayServoName= "rtservo";
     public final String imuname = "gyro";
@@ -63,6 +69,10 @@ public class Hardware {
         leftTrayServo=map.servo.get(leftTrayServoName);
         rightTrayServo=map.servo.get(rightTrayServoName);
 
+        lArmMotor = map.dcMotor.get(lArmMotorName);
+        rArmMotor = map.dcMotor.get(rArmMotorName);
+        lIntakeMotor = map.dcMotor.get(lIntakeMotorName);
+        rIntakeMotor = map.dcMotor.get(rIntakeMotorName);
 
         frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         frontRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -80,21 +90,23 @@ public class Hardware {
 
 
 
-        BNO055IMU.Parameters gyroParams = new BNO055IMU.Parameters();
-        gyroParams.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
-        gyroParams.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
-        gyroParams.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
-        gyroParams.loggingEnabled      = true;
-        gyroParams.loggingTag          = "IMU";
-        gyroParams.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
+//        BNO055IMU.Parameters gyroParams = new BNO055IMU.Parameters();
+////        climbSwitch = map.touchSensor.get(climbSwitchName);
+////        gyroParams.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
+////        gyroParams.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+////        gyroParams.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
+////        gyroParams.loggingEnabled      = true;
+////        gyroParams.loggingTag          = "IMU";
+////        gyroParams.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
+////
+////        imu = map.get(BNO055IMU.class, imuname);
+////        imu.initialize(gyroParams);
+////        gyroWrapper = new GyroWrapper(imu);
 
-        imu = map.get(BNO055IMU.class, imuname);
-        imu.initialize(gyroParams);
-        gyroWrapper = new GyroWrapper(imu);
-        frontLeftMotorWrapper = new DCMotorWrapper(frontLeftMotor,true, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, 0,"front left") );
-        frontRightMotorWrapper = new DCMotorWrapper(frontRightMotor,false, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, 0, "front right"));
-        backLeftMotorWrapper = new DCMotorWrapper(backLeftMotor,false, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, 0, "back left"));
-        backRightMotorWrapper = new DCMotorWrapper(backRightMotor,false, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, 0,"back right"));
+        frontLeftMotorWrapper = new DCMotorWrapper(frontLeftMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.MAX_TICKS_SPEED), true);
+        frontRightMotorWrapper = new DCMotorWrapper(frontRightMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.MAX_TICKS_SPEED), false);
+        backLeftMotorWrapper = new DCMotorWrapper(backLeftMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.MAX_TICKS_SPEED), false);
+        backRightMotorWrapper = new DCMotorWrapper(backRightMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.MAX_TICKS_SPEED), false);
     }
 
     public static void setHardwareMap(HardwareMap map) {

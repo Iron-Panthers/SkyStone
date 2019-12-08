@@ -18,12 +18,13 @@ public class DCMotorWrapper {
     private long lastTicks;
     private boolean isInverted;
     private double maxPower;
+    private boolean inverted;
 
-    public DCMotorWrapper(DcMotor motor, boolean isInverted, PID pid) {
+    public DCMotorWrapper(DcMotor motor, PID pid, boolean encInverted) {
         this.motor = motor;
         this.pid = pid;
         maxPower = 1;
-        this.isInverted=isInverted;
+        inverted = encInverted;
     }
 
     public void setPath(MotionPath path) {
