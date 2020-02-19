@@ -16,11 +16,14 @@ public class RunArm extends Command {
 
     @Override
     public void loop() {
-        if(OI.instance.gp1.a_button.state()) {
+        if(OI.instance.gp2.a_button.state()) {
             Subsystems.instance.arm.setArm(0.8);
         }
-        else if(OI.instance.gp1.y_button.state()) {
+        else if(OI.instance.gp2.y_button.state()) {
             Subsystems.instance.arm.setArm(-0.8);
+        }
+        else{
+            Subsystems.instance.arm.reset();
         }
     }
 

@@ -30,8 +30,8 @@ public class Hardware {
     public DcMotor frontRightMotor;
     public DcMotor backLeftMotor;
     public DcMotor backRightMotor;
-    public Servo leftTrayServo;
-    public Servo rightTrayServo;
+    public CRServo leftTrayServo;
+    public CRServo rightTrayServo;
     public GyroWrapper gyroWrapper;
 
     public DcMotor lArmMotor;
@@ -66,8 +66,8 @@ public class Hardware {
         frontRightMotor= map.dcMotor.get(frontRightMotorName);
         backLeftMotor = map.dcMotor.get(backLeftMotorName);
         backRightMotor= map.dcMotor.get(backRightMotorName);
-        leftTrayServo=map.servo.get(leftTrayServoName);
-        rightTrayServo=map.servo.get(rightTrayServoName);
+        leftTrayServo=map.crservo.get(leftTrayServoName);
+        rightTrayServo=map.crservo.get(rightTrayServoName);
 
         lArmMotor = map.dcMotor.get(lArmMotorName);
         rArmMotor = map.dcMotor.get(rArmMotorName);
@@ -103,10 +103,10 @@ public class Hardware {
 ////        imu.initialize(gyroParams);
 ////        gyroWrapper = new GyroWrapper(imu);
 
-        frontLeftMotorWrapper = new DCMotorWrapper(frontLeftMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.MAX_TICKS_SPEED), true);
-        frontRightMotorWrapper = new DCMotorWrapper(frontRightMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.MAX_TICKS_SPEED), false);
-        backLeftMotorWrapper = new DCMotorWrapper(backLeftMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.MAX_TICKS_SPEED), false);
-        backRightMotorWrapper = new DCMotorWrapper(backRightMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.MAX_TICKS_SPEED), false);
+        frontLeftMotorWrapper = new DCMotorWrapper(frontLeftMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.MAX_TICKS_SPEED,frontLeftMotorName), true);
+        frontRightMotorWrapper = new DCMotorWrapper(frontRightMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.MAX_TICKS_SPEED,frontRightMotorName), false);
+        backLeftMotorWrapper = new DCMotorWrapper(backLeftMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.MAX_TICKS_SPEED,backLeftMotorName), false);
+        backRightMotorWrapper = new DCMotorWrapper(backRightMotor, new PID(Constants.DRIVE_P, Constants.DRIVE_I, Constants.DRIVE_D, Constants.MAX_TICKS_SPEED,backRightMotorName), false);
     }
 
     public static void setHardwareMap(HardwareMap map) {

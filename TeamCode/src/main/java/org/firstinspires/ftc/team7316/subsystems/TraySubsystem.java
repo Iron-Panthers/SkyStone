@@ -1,5 +1,8 @@
 package org.firstinspires.ftc.team7316.subsystems;
 
+import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+
 import org.firstinspires.ftc.team7316.commands.TeleopTrayServo;
 import org.firstinspires.ftc.team7316.maps.Constants;
 import org.firstinspires.ftc.team7316.maps.Hardware;
@@ -22,11 +25,11 @@ public class TraySubsystem extends Subsystem {
         return new TeleopTrayServo();
     }
     public void down(){
-        Hardware.instance.rightTrayServo.setPosition(Constants.trayServoDown);
-        Hardware.instance.leftTrayServo.setPosition(Constants.trayServoDown);
+        Hardware.instance.leftTrayServo.setPower(.6);
+        Hardware.instance.leftTrayServo.setPower(.6);
     }
     public void up(){
-        Hardware.instance.rightTrayServo.setPosition(Constants.trayServoUp);
-        Hardware.instance.leftTrayServo.setPosition(Constants.trayServoUp);
+        Hardware.instance.rightTrayServo.setPower(-.6);
+        Hardware.instance.leftTrayServo.setPower(-.6);
     }
 }

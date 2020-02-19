@@ -57,8 +57,14 @@ public class JoystickDrive extends Command {
         Hardware.log("rotated x:", rotatedX);
         Hardware.log("rotated y:", rotatedY);
 
-        Subsystems.instance.mecanumDriveSubsystem.setMotors(rotatedY + turn, rotatedX - turn,
-                rotatedX + turn, rotatedY - turn);
+        if(OI.instance.gp1.rightTriggerWrapper.pressedState()){
+            Subsystems.instance.mecanumDriveSubsystem.setMotors(.7*(rotatedY + turn), .7*(rotatedX - turn),
+                    .7*(rotatedX + turn), .7*(rotatedY - turn));
+        }
+        else{
+            Subsystems.instance.mecanumDriveSubsystem.setMotors(rotatedY + turn, rotatedX - turn,
+                    rotatedX + turn, rotatedY - turn);
+        }
 
     }
 

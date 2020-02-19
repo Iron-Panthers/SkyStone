@@ -4,19 +4,22 @@ import org.firstinspires.ftc.team7316.maps.OI;
 import org.firstinspires.ftc.team7316.maps.Subsystems;
 import org.firstinspires.ftc.team7316.util.commands.Command;
 
-public class TeleopTrayServo extends Command {
+public class TeleopIntake extends Command {
     @Override
     public void init() {
-        Subsystems.instance.traySubsystem.up();
+        Subsystems.instance.intake.reset();
     }
 
     @Override
     public void loop() {
-        if(OI.instance.gp2.right_bumper.pressedState()){
-            Subsystems.instance.traySubsystem.down();
+        if(OI.instance.gp2.rightTriggerWrapper.pressedState()){
+            Subsystems.instance.intake.intake();
         }
-        if(OI.instance.gp2.left_bumper.pressedState()){
-            Subsystems.instance.traySubsystem.up();
+        else if( OI.instance.gp2.leftTriggerWrapper.pressedState()){
+            Subsystems.instance.intake.outtake();
+        }
+        else{
+            Subsystems.instance.intake.reset();
         }
     }
 

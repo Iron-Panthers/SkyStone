@@ -27,10 +27,10 @@ public class MecanumDriveSubsystem extends Subsystem {
     }
 
     public void setMotors(double lFrontSet, double rFrontSet, double lBackSet, double rBackSet ) {
-        Hardware.instance.frontLeftMotor.setPower(.7*-lFrontSet);
-        Hardware.instance.frontRightMotor.setPower(.7*rFrontSet);
-        Hardware.instance.backLeftMotor.setPower(.7*lBackSet);
-        Hardware.instance.backRightMotor.setPower(.7*rBackSet);
+        Hardware.instance.frontLeftMotor.setPower(-lFrontSet);
+        Hardware.instance.frontRightMotor.setPower(rFrontSet);
+        Hardware.instance.backLeftMotor.setPower(lBackSet);
+        Hardware.instance.backRightMotor.setPower(rBackSet);
     }
 
     public void setSides(double leftset, double rightset){
