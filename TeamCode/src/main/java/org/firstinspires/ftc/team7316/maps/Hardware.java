@@ -30,12 +30,10 @@ public class Hardware {
     public DcMotor frontRightMotor;
     public DcMotor backLeftMotor;
     public DcMotor backRightMotor;
-    public CRServo leftTrayServo;
-    public CRServo rightTrayServo;
     public GyroWrapper gyroWrapper;
+    public Servo parkServo;
 
-    public DcMotor lArmMotor;
-    public DcMotor rArmMotor;
+    public DcMotor ArmMotor;
     public DcMotor lIntakeMotor;
     public DcMotor rIntakeMotor;
 
@@ -49,13 +47,11 @@ public class Hardware {
     public final String frontRightMotorName = "frmotor";
     public final String backLeftMotorName = "blmotor";
     public final String backRightMotorName = "brmotor";
-    public final String lArmMotorName = "larmmotor";
-    public final String rArmMotorName = "rarmmotor";
+    public final String ArmMotorName = "armmotor";
     public final String lIntakeMotorName = "lintakemotor";
     public final String rIntakeMotorName = "rintakemotor";
-    public final String leftTrayServoName = "ltservo";
-    public final String rightTrayServoName= "rtservo";
     public final String imuname = "gyro";
+    public final String parkServoName="park";
 
 
     /**
@@ -66,11 +62,9 @@ public class Hardware {
         frontRightMotor= map.dcMotor.get(frontRightMotorName);
         backLeftMotor = map.dcMotor.get(backLeftMotorName);
         backRightMotor= map.dcMotor.get(backRightMotorName);
-        leftTrayServo=map.crservo.get(leftTrayServoName);
-        rightTrayServo=map.crservo.get(rightTrayServoName);
+        parkServo=map.servo.get(parkServoName);
 
-        lArmMotor = map.dcMotor.get(lArmMotorName);
-        rArmMotor = map.dcMotor.get(rArmMotorName);
+        ArmMotor = map.dcMotor.get(ArmMotorName);
         lIntakeMotor = map.dcMotor.get(lIntakeMotorName);
         rIntakeMotor = map.dcMotor.get(rIntakeMotorName);
 

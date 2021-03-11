@@ -3,7 +3,7 @@ package org.firstinspires.ftc.team7316.maps;
 import org.firstinspires.ftc.team7316.subsystems.ArmSubsystem;
 import org.firstinspires.ftc.team7316.subsystems.IntakeSubsystem;
 import org.firstinspires.ftc.team7316.subsystems.MecanumDriveSubsystem;
-import org.firstinspires.ftc.team7316.subsystems.TraySubsystem;
+import org.firstinspires.ftc.team7316.subsystems.ParkSubystem;
 import org.firstinspires.ftc.team7316.util.Scheduler;
 import org.firstinspires.ftc.team7316.util.subsystems.Subsystem;
 
@@ -17,18 +17,18 @@ public class Subsystems {
 
     public Subsystem[] subsystems;
     public MecanumDriveSubsystem mecanumDriveSubsystem;
-    public TraySubsystem traySubsystem;
     public ArmSubsystem arm;
     public IntakeSubsystem intake;
+    public ParkSubystem park;
 
 
     private Subsystems () {
         mecanumDriveSubsystem = new MecanumDriveSubsystem();
-        traySubsystem=new TraySubsystem();
         arm = new ArmSubsystem();
         intake = new IntakeSubsystem();
+        park = new ParkSubystem();
 
-        subsystems = new Subsystem[] {mecanumDriveSubsystem, arm,traySubsystem, intake};
+        subsystems = new Subsystem[] {mecanumDriveSubsystem, arm, intake,park};
     }
 
     public static void createSubsystems() {

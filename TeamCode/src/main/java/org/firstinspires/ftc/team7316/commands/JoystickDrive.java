@@ -61,6 +61,9 @@ public class JoystickDrive extends Command {
             Subsystems.instance.mecanumDriveSubsystem.setMotors(.7*(rotatedY + turn), .7*(rotatedX - turn),
                     .7*(rotatedX + turn), .7*(rotatedY - turn));
         }
+        else if(magnitude==0){
+            Subsystems.instance.mecanumDriveSubsystem.setMotors(turn, -turn, turn,-turn);
+        }
         else{
             Subsystems.instance.mecanumDriveSubsystem.setMotors(rotatedY + turn, rotatedX - turn,
                     rotatedX + turn, rotatedY - turn);

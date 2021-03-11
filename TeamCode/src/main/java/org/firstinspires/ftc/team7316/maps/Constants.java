@@ -25,7 +25,7 @@ public class Constants {
     public static final int DISTANCE_ERROR_RANGE_TICKS = 10;
     public static final double ACCELERATION_SPEED = 0.2;
 
-    public static final double DRIVE_P = .001;
+    public static final double DRIVE_P = .01;
     public static final double DRIVE_I = 0;//0.00005;
     public static final double DRIVE_D = 0;
 

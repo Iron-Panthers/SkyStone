@@ -9,8 +9,7 @@ public class ArmSubsystem extends Subsystem {
 
     @Override
     public void reset() {
-        Hardware.instance.lArmMotor.setPower(0);
-        Hardware.instance.rArmMotor.setPower(0);
+        Hardware.instance.ArmMotor.setPower(0);
     }
 
     @Override
@@ -24,7 +23,6 @@ public class ArmSubsystem extends Subsystem {
     }
 
     public void setArm(double power) {
-        Hardware.instance.lArmMotor.setPower(power);
-        Hardware.instance.rArmMotor.setPower(power);
+        Hardware.instance.ArmMotor.setPower(power);
     }
 }
