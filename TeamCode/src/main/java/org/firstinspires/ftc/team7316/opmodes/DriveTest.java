@@ -18,12 +18,12 @@ public class DriveTest extends AutoBaseOpMode {
     @Override
     public void onInit() {
 
-        //Scheduler.instance.add(new DriveDistance(Constants.inchesToTicks(10)));
+        Scheduler.instance.add(new DriveDistance(Constants.inchesToTicks(10)));
     }
 
     @Override
     public void onLoop() {
-         Subsystems.instance.arm.setArm(.8);
+         //Subsystems.instance.arm.setArm(.8);
 
     }
 }
